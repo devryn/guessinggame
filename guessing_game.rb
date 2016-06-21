@@ -1,47 +1,21 @@
-class Player
-  attr_reader :name
+puts "Guess a number, any number, so long as it's between 1-100."
 
-  def initialize(name)
-    @name = name
+player_answer = gets.chomp.to_i
+comp_answer = (1..100).to_a.sample
+puts comp_answer
+
+loop do
+  if player_answer == comp_answer
+    puts "Winner winner chicken dinner"
+    exit
+  elsif player_answer > comp_answer
+    puts "Too high, too high!"
+    player_answer = gets.chomp.to_i
+  elsif player_answer < comp_answer
+    puts "Eh, try bumping it up a little."
+    player_answer = gets.chomp.to_i
+  else
+    puts "Are you feeling okay?"
+    player_answer = gets.chomp.to_i
   end
 end
-
-class Game
-  def welcome
-    puts
-    puts "Welcome to the Guessing Game."
-    puts
-  end
-
-  def prompt(msg)
-    print msg
-    return gets.chomp
-  end
-
-  def start
-    welcome
-
-    name = prompt("What is your name? >")
-
-    @player   = Player.new(name)
-    @computer = Player.new("Unbeatable Computer")
-  end
-
-
-  def random_number
-    if player_number.value > computer_number.value
-      puts "Too high, too high!!"
-      exit
-    elsif @player.number.value < @computer.number.value
-      puts "Eh, try bumping your guess up a little."
-      exit
-    elsif @player.number.value == @computer.number.value
-      puts "Correctomundo."
-      exit
-    else
-      puts "Are you feeling all right?"
-    end
-  end
-end
-
-Game.new.start
