@@ -53,6 +53,8 @@ class Game
         puts HIGH
       elsif too_low(player_answer, comp_answer)
         puts LOW
+      #elsif too_low < prev_answers (not working)
+      #  puts "I said too low!"
       end
 
     unless prev_answers.include? player_answer
